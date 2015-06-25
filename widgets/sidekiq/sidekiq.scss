@@ -1,0 +1,67 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  rgba(255, 255, 255, 1.0);
+$value-color:       rgba(0, 0, 0px, 1.0);
+
+$title-color:       rgba(0, 0, 0px, 1.0);
+$moreinfo-color:    rgba(0, 0, 0px, 1.0);
+
+// ----------------------------------------------------------------------------
+// Widget-sidekiq styles
+// ----------------------------------------------------------------------------
+.widget-sidekiq {
+
+  background-color: $background-color;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(/assets/sidekiq_logo.png);
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+
+  .title {
+    color: $title-color;
+    font-size: 35px;
+    position: absolute;
+    top:0px;
+    left: 5px;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: $value-color;
+  }
+
+  ul {
+    margin: 0 15px;
+    text-align: left;
+    color: $value-color;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  .list-nostyle {
+    list-style: none;
+  }
+
+  .label {
+    color: $value-color;
+  }
+
+  .value {
+    float: right;
+    margin-left: 12px;
+    font-weight: 600;
+    color: $value-color;
+  }
+
+}

@@ -1,0 +1,51 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  rgba(255, 255, 255, 1.0);
+$value-color:       rgba(0, 0, 0px, 1.0);
+
+$title-color:       rgba(0, 0, 0px, 1.0);
+$moreinfo-color:    rgba(0, 0, 0px, 1.0);
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+.widget-jira {
+
+  background-color: $background-color;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/assets/jira.png");
+
+  .title {
+    color: $title-color;
+    font-size: 35px;
+    position: absolute;
+    top:0px;
+    left: 5px;
+  }
+
+  .value {
+    color: $value-color;
+  }
+
+  .change-rate {
+    font-weight: 500;
+    font-size: 30px;
+    color: $value-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 1.0);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+}

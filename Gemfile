@@ -5,4 +5,11 @@ gem 'haml'
 gem 'dotenv'
 
 # Widgets
-gem 'jira-ruby'
+gem 'sidekiq', '~>3.0'
+
+gem 'newrelic_api'
+gem 'activeresource' # New Relic
+
+gem 'octokit' # Github Pull Requests
+
+gem 'circleci'
