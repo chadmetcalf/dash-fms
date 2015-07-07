@@ -1,6 +1,6 @@
 metric = 'Apdex'
 
-newrelic = Newrelic.new({metric: metric})
+newrelic = Newrelic.new({metric: 'Apdex'})
 points = newrelic.points
 last_x = points.last[:x]
 

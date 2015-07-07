@@ -2,9 +2,9 @@
 // Sass declarations
 // ----------------------------------------------------------------------------
 $background-color:  rgba(255, 255, 255, 1.0);
-$value-color:       rgba(0, 0, 0px, 1.0);
+$value-color:       rgba(0, 0, 0px, 0.9);
 
-$title-color:       rgba(0, 0, 0px, 1.0);
+$title-color:       rgba(0, 0, 0px, 0.7);
 $moreinfo-color:    rgba(0, 0, 0px, 1.0);
 
 // ----------------------------------------------------------------------------
@@ -20,8 +20,9 @@ $moreinfo-color:    rgba(0, 0, 0px, 1.0);
 
   .title {
     color: $title-color;
-    font-size: 35px;
+    font-size: 2.0em;
     position: absolute;
+    text-align: left;
     top:0px;
     left: 5px;
   }
@@ -41,7 +42,7 @@ $moreinfo-color:    rgba(0, 0, 0px, 1.0);
   }
 
   .updated-at {
-    color: rgba(255, 255, 255, 1.0);
+    color: rgba(0, 0, 0, 0.4);
   }
 
 

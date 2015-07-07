@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pry'
+
 gem 'dashing'
 gem 'haml'
 gem 'dotenv'
@@ -13,3 +15,4 @@ gem 'activeresource' # New Relic
 gem 'octokit' # Github Pull Requests
 
 gem 'circleci'
+gem 'httparty'

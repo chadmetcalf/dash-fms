@@ -2,43 +2,57 @@
 // Sass declarations
 // ----------------------------------------------------------------------------
 $background-color:  gray;
-$value-color:       #fff;
+$value-color:       rgba(255, 255, 255, 0.7);
 
 $pass-color:        #8fb347;
 $fail-color:        #ad3b0e;
 $else-color:        #9CB4F4;
 
 $title-color:       rgba(255, 255, 255, 0.7);
-$label-color:       rgba(255, 255, 255, 0.7);
+$label-color:       rgba(255, 255, 255, 0.9);
 $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
 // ----------------------------------------------------------------------------
 // Widget-pull-requests styles
 // ----------------------------------------------------------------------------
-.widget-pull-requests {
+.widget-pullrequests {
 
   background-color: teal;
   vertical-align: top;
 
-  .header {
-    color: $label-color;
+  .title {
+    color: $title-color;
+    font-size: 2.0em;
+    position: absolute;
+    text-align: left;
+    top:0px;
+    left: 5px;
+  }
+
+  .total {
+    color: $title-color;
+    font-size: 2.0em;
+    position: absolute;
+    text-align: right;
+    top:0px;
+    right: 15px;
   }
 
   span {
     font-size: 12px;
   }
 
-  .title {
+  .pull-title {
     font-size: 0.8em;
     font-weight: 500;
   }
 
   .pull_info {
     line-height: 60%;
+    color: $moreinfo-color;
   }
 
   ol, ul {
-    margin: 0 15px;
     text-align: left;
     color: $label-color;
   }
@@ -48,10 +62,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   }
 
   li {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .list {
+    margin-top: 35px;
     list-style: none;
   }
 

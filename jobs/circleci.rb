@@ -20,22 +20,17 @@ def broken_or_no_builds
     label: 'N/A',
     value: 'N/A',
     committer: '',
-    state: 'broken'
+    state: 'broken',
+    climate: ''
   }
 end
 
-def get_climate(builds = [])
-  return '|' if builds.empty?
-  statuses = builds[0..10].map { |build| build['status'] if build['branch'] == 'master' }.compact
-  weight = nil
+def get_climate(build = {})
+  return '|' if build.empty?
 
-  statuses.each do |status|
-    factor = Constants.const_get("#{status.upcase}_C") rescue nil
-    next unless factor
-    weight = weight.nil? ? factor : weight * factor
-  end
+  factor = Constants.const_get("#{build['status'].upcase}_C") rescue nil
 
-  case weight
+  case factor
   when 0.0..0.25  then '9'
   when 0.26..0.5  then '7'
   when 0.51..0.75 then '1'
@@ -45,27 +40,32 @@ def get_climate(builds = [])
   end
 end
 
-def get_build_info(builds=[])
-  return broken_or_no_builds if builds.empty?
-  build = builds.detect { |b| b['branch'] ==  'master' }
-  {
-    label: "Build ##{build['build_num']}",
-    value: build['subject'],
-    committer: build['committer_name'],
-    state: build['status'],
-    climate: get_climate(builds)
-  }
+def build_info
+  get_builds.map do |build|
+    return broken_or_no_builds if build.nil? || build.empty?
+
+    {
+      label: "Build ##{build['build_num'].to_s}",
+      value: build['subject'],
+      committer: build['committer_name'],
+      state: build['status'],
+      climate: get_climate(build)
+    }
+  end
 end
 
-config_file = File.dirname(File.expand_path(__FILE__)) + '/../config/circleci.yml'
-config = YAML::load(File.open(config_file))
+def get_builds
+  CircleCi.configure { |c| c.token = ENV['CIRCLECI_API_TOKEN'] }
 
-SCHEDULER.every('1m', { first_in: '2s', allow_overlapping: false }) do
-  CircleCi.configure { |c| c.token = config['token'] }
-  config['projects'].to_a.each do |options|
-    res = CircleCi::Project.recent_builds options['user'], options['repo']
-    body = res.body.is_a?(Array) ? res.body : []
-    build_info = get_build_info(res.body)
-    send_event(options['css_id'], { items: [build_info] })
-  end
+  res = CircleCi::Project.recent_builds(ENV['CIRCLECI_USER'], ENV['CIRCLECI_REPO'])
+  return [] unless res.try(:code) == 200
+  return [] unless res.body.is_a?(Array)
+
+  res.body.select{ |b| b['branch'] ==  'master' }
+rescue
+  []
+end
+
+SCHEDULER.every('15m', { first_in: '2s', allow_overlapping: false }) do
+  send_event('circleci', { items: build_info })
 end

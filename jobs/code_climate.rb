@@ -5,7 +5,7 @@ SCHEDULER.every '1h', :first_in => 0 do |job|
   repo_id = ENV['CODE_CLIMATE_REPO_ID']
   api_token = ENV['CODE_CLIMATE_API_TOKEN']
 
-  uri = URI.parse("https://codeclimate.com/api/repos/#{repo_id}")
+  uri = URI.parse("https://codeclimate.com/api/repos/#{repo_id}/branches/master")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   request = Net::HTTP::Get.new(uri.request_uri)

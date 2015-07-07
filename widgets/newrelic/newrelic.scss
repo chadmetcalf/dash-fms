@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------
 $background-color:  #7F8C8D;
 
-$title-color:       rgba(255, 255, 255, 1.0);
+$title-color:       rgba(255, 255, 255, 0.7);
 $moreinfo-color:    rgba(255, 255, 255, 1.0);
 
 // ----------------------------------------------------------------------------
@@ -28,19 +28,30 @@ $moreinfo-color:    rgba(255, 255, 255, 1.0);
     top: 30px;
   }
 
-
   .newrelic-graph {
     position: absolute;
-    top: 178px;
-    left: 0;
+    bottom: 5px;
+    width:95%;
+    svg {
+      width:100%;
+      height:10em;
+    }
   }
 
   .title {
     color: $title-color;
     font-size: 35px;
     position: absolute;
+    text-align: left;
+    width: 50%;
     top:0px;
     left: 5px;
+  }
+
+  .value {
+    position: absolute;
+    top: 0px;
+    right: 15px;
   }
 
   .more-info {

@@ -4,61 +4,65 @@
     // Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
     Dashing.widget_base_dimensions = [200, 300]
     Dashing.numColumns = 8
-    Dashing.numRows = 5
+    Dashing.numRows = 3
   });
 - content_for :title do
   FMS Dev Dashboard
 .gridster
   %ul
+    // New Relic
+    // https://gist.github.com/assimovt/5181244
+    // Apdex
+    %li{data: {col: '1', row: '1', sizex: '2', sizey: '1'}}
+      %div#newrelic_Apdex{data: {id: 'newrelic_Apdex', view: 'Newrelic',
+                                 title: 'Apdex', green: '0.9', yellow: '0.8'}}
+    // Error Rate
+    %li{data: {col: '2', row: '1', sizex: '2', sizey: '1'}}
+      %div#newrelic_Error_Rate{data: {id: 'newrelic_Error_Rate', view: 'Newrelic',
+                                 title: 'Error Rate', green: '1', yellow: '3'}}
+    // Throughput
+    %li{data: {col: '3', row: '1', sizex: '2', sizey: '1'}}
+      %div#newrelic_Throughput{data: {id: 'newrelic_Throughput', view: 'Newrelic',
+                                 title: 'RPM', green: '2000', yellow: '2500'}}
+    // Response Time
+    %li{data: {col: '4', row: '1', sizex: '2', sizey: '1'}}
+      %div#newrelic_Response_Time{data: {id: 'newrelic_Response_Time', view: 'Newrelic',
+                                 title: 'Response time', green: '200', yellow: '500'}}}
+
+    // Sidekiq
+    // https://gist.github.com/pallan/57f778cace40fd56fb4d
+    %li{data: {col: '1', row: '2', sizex: '2', sizey: '1'}}
+      %div{data: {id: 'sidekiq', view: 'Sidekiq', title: 'Sidekiq'}}
+    // Github Open Pull Requests
+    // https://gist.github.com/dragonai/9d91e0f0bc78265e8281
+    %li{data: {col: '4', row: '2', sizex: '3', sizey: '1'}}
+      %div{data: {id: 'github-prs', view: 'Pullrequests	', title: 'Github Open PRs'}}
+    // CodeClimate
+    // https://gist.github.com/dgehrett/6829168
+    %li{data: {col: '3', row: '2', sizex: '1', sizey: '1'}}
+      %div{data: {id: 'code-climate', view: 'Codeclimate', title: 'GPA'}}
+
+    // Circle CI
+    // https://github.com/mtchavez/dashing-circleci
+    %li{data: {col: '7', row: '2', sizex: '2', sizey: '2'}}
+      %div{data: {id: 'circle-ci-list', view: "CircleCiList", title: "CircleCI"}}
+
     // Jira
     // https://gist.github.com/vossim/c0072296d3297d3ae6fd
     %li{data: {col: '1', row: '3', sizex: '1', sizey: '1'}}
       %div{data: {view: "Jira", title: "Rejected", id: "rejected"}}
     %li{data: {col: '2', row: '3', sizex: '1', sizey: '1'}}
-      %div{data: {view: "Jira", title: "Demo", id: "demo"}}
+      %div{data: {view: "Jira", title: "In Prog", id: "dev-in-progress"}}
     %li{data: {col: '3', row: '3', sizex: '1', sizey: '1'}}
-      %div{data: {view: "Jira", title: "Pull Request", id: "pull-request"}}
+      %div{data: {view: "Jira", title: "PRs", id: "pull-request"}}
     %li{data: {col: '4', row: '3', sizex: '1', sizey: '1'}}
       %div{data: {view: "Jira", title: "QA Ready", id: "qa-ready"}}
-    -# %li{data: {col: '5', row: '3', sizex: '1', sizey: '1'}}
-    -#   %div{data: {view: "Jira", title: "Staging Ready", id: "staging-ready"}}
-    -# %li{data: {col: '6', row: '3', sizex: '1', sizey: '1'}}
-    -#   %div{data: {view: "Jira", title: "Staging QA", id: "staging-qa"}}
-    // New Relic
-    // https://gist.github.com/assimovt/5181244
-    // Apdex
-    %li{data: {col: '1', row: '1', sizex: '2', sizey: '2'}}
-      %div#newrelic_Apdex{data: {id: 'newrelic_Apdex', view: 'Newrelic',
-                                 title: 'Apdex', green: '0.9', yellow: '0.8'}}
-    // Error Rate
-    %li{data: {col: '2', row: '1', sizex: '2', sizey: '2'}}
-      %div#newrelic_Error_Rate{data: {id: 'newrelic_Error_Rate', view: 'Newrelic',
-                                 title: 'Error Rate', green: '1', yellow: '3'}}
-    // Throughput
-    %li{data: {col: '3', row: '1', sizex: '2', sizey: '2'}}
-      %div#newrelic_Throughput{data: {id: 'newrelic_Throughput', view: 'Newrelic',
-                                 title: 'RPM', green: '2000', yellow: '2500'}}
-    // Response Time
-    %li{data: {col: '4', row: '1', sizex: '2', sizey: '2'}}
-      %div#newrelic_Response_Time{data: {id: 'newrelic_Response_Time', view: 'Newrelic',
-                                 title: 'Response time', green: '200', yellow: '500'}}}
-    // Sidekiq
-    // https://gist.github.com/pallan/57f778cace40fd56fb4d
-    %li{data: {col: '1', row: '4', sizex: '2', sizey: '1'}}
-      %div{data: {id: 'sidekiq', view: 'Sidekiq', title: 'Sidekiq'}}
-    // Github Open Pull Requests
-    // https://gist.github.com/dragonai/9d91e0f0bc78265e8281
-    %li{data: {col: '4', row: '3', sizex: '2', sizey: '2'}}
-      %div{data: {id: 'github-pr', view: 'PullRequests', title: 'Open Pull Requests'}}
-    // Circle CI
-    // https://github.com/mtchavez/dashing-circleci
-    %li{data: {col: '6', row: '3', sizex: '2', sizey: '2'}}
-      %div{data: {id: 'fms', view: "CircleCi", unordered: "true", title: "CircleCI"}}
-    // CodeClimate
-    // https://gist.github.com/dgehrett/6829168
-    %li{data: {col: '5', row: '4', sizex: '1', sizey: '1'}}
-      %div{data: {id: 'code-climate', view: 'Codeclimate', title: 'Code Climate GPA'}}
+    %li{data: {col: '5', row: '3', sizex: '1', sizey: '1'}}
+      %div{data: {view: "Jira", title: "Staging Ready", id: "staging-ready"}}
+    %li{data: {col: '6', row: '3', sizex: '1', sizey: '1'}}
+      %div{data: {view: "Jira", title: "Staging QA", id: "staging-qa"}}
 
-  %center
-    %div{:style => "font-size: 12px"}
-      Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://#{request.host}:#{request.port}/widgets/welcome
+
+  -# %center
+  -#   %div{:style => "font-size: 12px"}
+  -#     Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://#{request.host}:#{request.port}/widgets/welcome

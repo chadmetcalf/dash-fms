@@ -5,8 +5,8 @@ class Newrelic
 
   attr_reader :metric, :points
 
-  def initialize(options)
-    @metric  = options[:metric]
+  def initialize(options = {})
+    @metric  = options.fetch(:metric, 'Apdex')
     @points  = points
   end
 
@@ -23,26 +23,25 @@ class Newrelic
   end
 
   def get_value
-    app_select[0].threshold_values.select{|v| v.name.eql? @metric}[0].metric_value
+    value = app.threshold_values.find{|v| v.name.eql? @metric}.metric_value
   end
 
   def stored_name
     "newrelic_#{@metric.gsub(/ /,'_')}"
   end
 
-  private
-
-  def newrelic_app
+  def newrelic_account
     NewRelicApi.api_key = api_key
-    NewRelicApi::Account.find(:first).applications
+    NewRelicApi::Account.find(:first)
   end
 
-  def app_select
-    newrelic_app.select { |i| i.name =~ /#{app_name}/ }
+  def app
+    # Find the first app that matches the name
+    newrelic_account.applications.find { |i| i.id == app_id.to_i }
   end
 
-  def app_name
-    ENV['NEWRELIC_APP_NAME']
+  def app_id
+    ENV['NEWRELIC_APP_ID']
   end
 
   def api_key

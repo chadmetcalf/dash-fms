@@ -1,10 +1,11 @@
-<h1 class="header" data-bind="header"></h1>
+<h1 class="title" data-bind="title"></h1>
+<h1 class="total" data-bind="total"></h1>
 
 <ul class="list">
   <li data-foreach-pull="pulls">
-    <p class="title" data-bind="pull.title"></p>
+    <p class="pull-title" data-bind="pull.title"></p>
     <div class="pull_info">
-      <span class="repo" data-bind="pull.repo"></span>
+      <span class="repo" data-bind="pull.repo_name"></span>
       <span>•</span>
       <span class="creator" data-bind="pull.creator"></span>
       <span>•</span>

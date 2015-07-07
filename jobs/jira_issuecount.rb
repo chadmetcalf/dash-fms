@@ -25,9 +25,6 @@ JIRA_OPENISSUES_CONFIG = {
   }
 }
 
-# fail "Missing Jira Username" unless JIRA_OPENISSUES_CONFIG[:username]
-# fail "Missing Jira Password" unless JIRA_OPENISSUES_CONFIG[:password]
-
 def getNumberOfIssues(url, username, password, jqlStatus)
   uri = URI.parse("#{url}/rest/api/2/search?jql=project%20%3D%20FMS%20AND%20status%20%3D%20%22#{jqlStatus}%22")
   http = Net::HTTP.new(uri.host, uri.port)

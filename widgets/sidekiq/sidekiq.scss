@@ -2,10 +2,10 @@
 // Sass declarations
 // ----------------------------------------------------------------------------
 $background-color:  rgba(255, 255, 255, 1.0);
-$value-color:       rgba(0, 0, 0px, 1.0);
+$value-color:       rgba(0, 0, 0px, 0.9);
 
-$title-color:       rgba(0, 0, 0px, 1.0);
-$moreinfo-color:    rgba(0, 0, 0px, 1.0);
+$title-color:       rgba(0, 0, 0px, 0.7);
+$moreinfo-color:    rgba(0, 0, 0px, 0.7);
 
 // ----------------------------------------------------------------------------
 // Widget-sidekiq styles
@@ -18,15 +18,11 @@ $moreinfo-color:    rgba(0, 0, 0px, 1.0);
   background-size: cover;
   background-image: url(/assets/sidekiq_logo.png);
 
-
-  &.large h3 {
-    font-size: 65px;
-  }
-
   .title {
     color: $title-color;
-    font-size: 35px;
+    font-size: 2.0em;
     position: absolute;
+    text-align: left;
     top:0px;
     left: 5px;
   }
@@ -36,7 +32,7 @@ $moreinfo-color:    rgba(0, 0, 0px, 1.0);
   }
 
   .updated-at {
-    color: $value-color;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   ul {
@@ -51,6 +47,10 @@ $moreinfo-color:    rgba(0, 0, 0px, 1.0);
 
   .list-nostyle {
     list-style: none;
+  }
+
+  .label, .value{
+    font-size: 1.25em;
   }
 
   .label {
