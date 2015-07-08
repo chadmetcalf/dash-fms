@@ -13,7 +13,9 @@ JIRA_OPENISSUES_CONFIG = {
     'to-do':    'To+Do',
     'analyze':  'Analyze',
     'rejected': 'Rejected',
-    'dev-in-progress': 'Dev+In+Progress',
+    'staging rejected': 'Staging+Rejected',
+    'needs changes': 'Needs+Changes',
+    'dev-in-progress': 'In+Progress',
     'demo': 'Demo',
     'pull-request': 'Pull+Request',
     'qa-ready': 'QA+Ready',
@@ -38,7 +40,14 @@ end
 
 JIRA_OPENISSUES_CONFIG[:issuecount_mapping].each do |mappingName, filter|
   SCHEDULER.every '10m', :first_in => 0 do
-    total = getNumberOfIssues(JIRA_OPENISSUES_CONFIG[:jira_url], JIRA_OPENISSUES_CONFIG[:username], JIRA_OPENISSUES_CONFIG[:password], filter)
+    total = case filter
+    when /rejected/i
+      ['Rejected','Staging+Rejected','Needs+Changes'].map do |status|
+        rejected_total(JIRA_OPENISSUES_CONFIG[:jira_url], JIRA_OPENISSUES_CONFIG[:username], JIRA_OPENISSUES_CONFIG[:password], status)
+      end
+    else
+      getNumberOfIssues(JIRA_OPENISSUES_CONFIG[:jira_url], JIRA_OPENISSUES_CONFIG[:username], JIRA_OPENISSUES_CONFIG[:password], filter)
+    end
     send_event(mappingName, {current: total})
   end
 end
