@@ -5,7 +5,7 @@ $background-passed-color:  #8fb347;
 $background-pending-color: #47bbb3;
 
 $title-color:       rgba(255, 255, 255, 1);
-$label-color:       rgba(255, 255, 255, 0.7);
+$label-color:       rgba(255, 255, 255, 1);
 
 .widget.widget-circle-ci-list{
 
@@ -14,11 +14,11 @@ $label-color:       rgba(255, 255, 255, 0.7);
   vertical-align: top;
 
   img.background {
-    width: 100% !important;
+    height: 100% !important;
     position: absolute;
-    left: 0;
-    top: 30px;
-    opacity: 0.05;
+    left: 30px;
+    top: 0px;
+    opacity: 0.1;
   }
 
   .title {
@@ -33,7 +33,7 @@ $label-color:       rgba(255, 255, 255, 0.7);
 
   ol, ul {
     margin: 0px;
-    margin-top: 3em;
+    margin-top: 0px;
     text-align: left;
     color: $label-color;
   }
@@ -43,7 +43,7 @@ $label-color:       rgba(255, 255, 255, 0.7);
   }
 
   li {
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
   }
 
   .list-nostyle {
@@ -53,8 +53,10 @@ $label-color:       rgba(255, 255, 255, 0.7);
     list-style: none;
 
     li {
-      margin-top: 5px;
-      min-height: 80px;
+      margin-bottom: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      height: 80px;
 
       &.failed {
         background-color: $background-error-color;

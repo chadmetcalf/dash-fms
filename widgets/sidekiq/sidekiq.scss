@@ -17,6 +17,7 @@ $moreinfo-color:    rgba(0, 0, 0px, 0.7);
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(/assets/sidekiq_logo.png);
+  background-opacity: 0.1;
 
   .title {
     color: $title-color;
@@ -42,7 +43,8 @@ $moreinfo-color:    rgba(0, 0, 0px, 0.7);
   }
 
   li {
-    margin-bottom: 5px;
+    margin: 0px, 60px, 0px, 60px;
+    padding: 0px;
   }
 
   .list-nostyle {
@@ -50,16 +52,19 @@ $moreinfo-color:    rgba(0, 0, 0px, 0.7);
   }
 
   .label, .value{
-    font-size: 1.25em;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.7em;
   }
 
   .label {
+    text-align: right;
     color: $value-color;
   }
 
   .value {
+    text-align: right;
     float: right;
-    margin-left: 12px;
     font-weight: 600;
     color: $value-color;
   }

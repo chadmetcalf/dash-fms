@@ -44,11 +44,13 @@
 
     // Circle CI
     // https://github.com/mtchavez/dashing-circleci
-    %li{data: {col: '7', row: '2', sizex: '2', sizey: '2'}}
+    %li{data: {col: '7', row: '2', sizex: '2', sizey: '1'}}
       %div{data: {id: 'circle-ci-list', view: "CircleCiList", title: "CircleCI"}}
 
     // Jira
     // https://gist.github.com/vossim/c0072296d3297d3ae6fd
+    %li{data: {col: '1', row: '3', sizex: '1', sizey: '1'}}
+      %div{data: {view: "Jira", title: "To Do", id: "to-do"}}
     %li{data: {col: '1', row: '3', sizex: '1', sizey: '1'}}
       %div{data: {view: "Jira", title: "Rejected", id: "rejected"}}
     %li{data: {col: '2', row: '3', sizex: '1', sizey: '1'}}
@@ -61,6 +63,9 @@
       %div{data: {view: "Jira", title: "Staging Ready", id: "staging-ready"}}
     %li{data: {col: '6', row: '3', sizex: '1', sizey: '1'}}
       %div{data: {view: "Jira", title: "Staging QA", id: "staging-qa"}}
+    %li{data: {col: '6', row: '3', sizex: '1', sizey: '1'}}
+      %div{data: {view: "Jira", title: "Accepted", id: "accepted-for-release"}}
+
 
 
   -# %center

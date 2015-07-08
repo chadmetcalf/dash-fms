@@ -22,7 +22,7 @@ def update_builds(project, auth_token)
   api_json = JSON.parse(api_response.body)
   return {} if api_json.empty?
 
-  builds = api_json.select{ |build| build['status'] != 'queued' }.first(6)
+  builds = api_json.select{ |build| build['status'] != 'queued' }.first(3)
 
   builds.map do |build|
     {
