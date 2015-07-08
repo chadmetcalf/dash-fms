@@ -25,7 +25,7 @@ SCHEDULER.every( '5m', { first_in: '5s', allow_overlapping: false }) do |job|
       creator: "@" + pull.try(:user).try(:login)
     }
   end
-  most_recent_open_prs = most_recent_open_prs.sort_by { |pr| pr[:updated_at] }.reverse.first(4)
+  open_prs = most_recent_open_prs.sort_by { |pr| pr[:updated_at] }.reverse.first(4)
 
-  send_event('github-prs', { total: open_pull_requests.length, pulls: most_recent_open_prs })
+  send_event('github-prs', { total: open_pull_requests.length, pulls: open_prs })
 end
