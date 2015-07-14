@@ -1,5 +1,9 @@
 require 'octokit'
 
+require 'dotenv'
+Dotenv.load unless ENV['GITHUB_AUTH_TOKEN']
+
+
 def client
   Octokit::Client.new(:access_token => ENV['GITHUB_AUTH_TOKEN'])
 end

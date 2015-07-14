@@ -1,6 +1,10 @@
 require 'net/http'
 require 'json'
 
+require 'dotenv'
+Dotenv.load unless ENV['CODE_CLIMATE_REPO_ID']
+
+
 SCHEDULER.every '1h', :first_in => 0 do |job|
   repo_id = ENV['CODE_CLIMATE_REPO_ID']
   api_token = ENV['CODE_CLIMATE_API_TOKEN']

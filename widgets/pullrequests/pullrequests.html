@@ -5,7 +5,7 @@
 
 <ul class="list">
   <li data-foreach-pull="pulls">
-    <p class="pull-title" data-bind="pull.title"></p>
+    <p class="pull-title" data-bind="pull.title | truncate 80"></p>
     <div class="pull_info">
       <span class="repo" data-bind="pull.repo_name"></span>
       <span>•</span>

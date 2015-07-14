@@ -1,5 +1,9 @@
 require 'sidekiq/api'
 
+require 'dotenv'
+Dotenv.load unless ENV['SIDEKIQ_REDIS_URI']
+
+
 Sidekiq.configure_client do |config|
   config.redis = { url:  ENV['SIDEKIQ_REDIS_URI'], namespace:  ENV['SIDEKIQ_REDIS_NAMESPACE'] }
 end

@@ -1,6 +1,12 @@
 require 'httparty'
 require 'digest/md5'
 
+require 'dotenv'
+Dotenv.load unless ENV['CIRCLECI_USER']
+Dotenv.load unless ENV['CIRCLECI_REPO']
+Dotenv.load unless ENV['CIRCLECI_API_TOKEN']
+
+
 projects = [
   { user: ENV['CIRCLECI_USER'], repo: ENV['CIRCLECI_REPO'], branch: 'master' }
 ]
