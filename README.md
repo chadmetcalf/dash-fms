@@ -1,1 +1,1 @@
-Check out http://shopify.github.com/dashing for more information.
+TODO: https://github.com/vossim/dashing-jira-burndown to replace github PRs?
